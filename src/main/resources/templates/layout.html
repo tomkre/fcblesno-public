@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="cs">
+<head>
+	<meta charset="UTF-8">
+	<title data-layout-title-pattern="$CONTENT_TITLE" data-th-text="#{title}"></title>
+	<link data-th-href="@{/icons/favicon.png}" type="image/png" rel="shortcut icon">
+	<link data-th-href="@{/css/main.css}" rel="stylesheet"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="_csrf" data-th-content="${_csrf.token}">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+	<div id="container">
+		<header>
+			<img data-th-src="@{/graphics/logo.png}" alt="logo">
+		</header>
+		<nav class="menu">
+			<ul class="mainmenu">
+				<li data-th-each="page: ${ {'home', 'a-team', 'b-team', 'futsal', 'articles', 'history'} }"
+					data-th-class="mainmenu-item" 
+				    data-th-classappend="|${page}-menu|">
+					<a data-th-href="@{/__${page}__}">
+						<span class="mainmenu-item-label" 
+							data-th-text="#{page.__${page}__}"></span>
+					</a>
+					<ul class="submenu" data-th-if="${#strings.contains('a-team,b-team,futsal', page)}">
+						<li data-th-each="subpage: ${ {'games', 'table', 'players', 'statistics'} }"
+							class="submenu-item" 
+							data-th-classappend="|${subpage}-submenu|">
+							<a data-th-href="${subpage ne 'table'} ? 
+								@{/__${page}__/__${subpage}__} : ${@environment.getProperty('link.table.__${page}__')}" 
+							   data-th-target="${subpage eq 'table'} ? '_blank'"
+							   data-th-text="#{page.team.__${subpage}__}"></a>
+						</li>
+						<li></li>
+						<li data-th-text="#{page.__${page}__}"></li>
+					</ul>
+					<ul class="submenu" data-th-if="${page eq 'articles'}">
+						<li data-th-each="subpage: ${ {'general', 'interview', 'tournament'} }"
+							class="submenu-item"
+							data-th-classappend="|${subpage}-submenu|">
+							<a data-th-href="@{/__${page}__/__${subpage}__/1}" data-th-text="#{page.articles.__${subpage}__}"></a>
+						</li>
+						<li data-th-each="i: ${#numbers.sequence(1, 2)}"></li>
+						<li data-th-text="#{page.__${page}__}"></li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+		<div id="main-content">
+			<main>
+				<h1 data-layout-fragment="headline"></h1>
+				<div data-layout-fragment="content" class="content"></div>
+				<div data-layout-fragment="complementary-data" class="complementary-data"></div>
+			</main>
+			<aside>
+				<section data-th-each="tense: ${ {'last', 'upcoming'} }" data-th-id="|${tense}-games|">
+					<h2 data-th-text="#{games.__${tense}__}"></h2>
+					<div class="game-info" data-th-each="game, iterStat: ${__${tense}__Games}">
+						<div data-th-if="${iterStat.count == 2}" class="hr-wrapper">
+							<hr>
+						</div>
+						<th:block data-th-if="${game != null}">
+							<time data-th-datetime="${#dates.format(game.gameDate, 'yyyy-MM-dd HH:mm')}" data-th-text="${#dates.format(game.gameDate, 'dd.MM.yyyy, HH:mm')}"></time><br>
+							<div class="logos-and-goals">
+								<img data-th-src="@{/images/logos/__${#strings.substring(game.teamHome.id, 0, 3)}__.png}" 
+									 data-th-onerror="|this.src = '@{/images/logos/ufa.png}'|" 
+									 data-th-alt="${game.teamHome.name}">
+								<a class="result" 
+									data-th-href="@{/__${game.teamFcb.contextPath}__/games/__${game.id}__}">
+									<strong><span data-th-text="${game.goalsHome}"></span></strong>
+									 :
+									<strong><span data-th-text="${game.goalsGuest}"></span></strong>
+								</a>
+								<img data-th-src="@{/images/logos/__${#strings.substring(game.teamGuest.id, 0, 3)}__.png}" 
+									 data-th-onerror="|this.src = '@{/images/logos/ufa.png}'|" 
+									 data-th-alt="${game.teamGuest.name}">
+							</div>
+							<div class="teams-names">
+								<span data-th-text="${game.teamHome.name}" data-th-class="${#strings.startsWith(game.teamHome.id, 'fcb')} ? 'team-fcb'"></span> 
+								<span data-th-text="${game.teamGuest.name}" data-th-class="${#strings.startsWith(game.teamGuest.id, 'fcb')} ? 'team-fcb'"></span>
+							</div>
+						</th:block>
+						<th:block data-th-if="${game == null}">
+							<div class="no-upcoming-game" data-th-text="#{games.upcoming.notExists}"></div>
+						</th:block>
+					</div>
+				</section>
+				<section class="admin-menu menu">
+					<h2 data-th-text="#{admin.menu}"></h2>
+					<div>
+						<ul>
+							<li data-th-each="menuItem: ${ {'articles', 'games', 'leagues', 'locations', 'players', 'teams'} }">
+								<a data-th-href="@{/admin/__${menuItem}__}" data-th-text="#{page.admin.__${menuItem}__}"></a>
+							</li>
+						</ul>
+					</div>
+				</section>
+			</aside>
+		</div>
+		<footer>
+			<div>
+				<section id="sponsors">
+					<h2 data-th-text="#{section.sponsors}"></h2>
+					<a href="http://www.blesno.cz" data-th-title="#{logo.blesno}" target="_blank">
+						<img data-th-src="@{/icons/blesno.png}" data-th-alt="#{logo.blesno}">			
+					</a>
+					<a href="https://www.kuryrjmp.cz" data-th-title="#{logo.kuryr}" target="_blank">
+						<img data-th-src="@{/icons/kuryr.png}" data-th-alt="#{logo.kuryr}">			
+					</a>
+				</section>
+				<section id="account">
+					<h2 data-th-text="#{section.account}"></h2>
+					<a href="https://ib.fio.cz/ib/transparent?a=2501696842&fbclid=IwAR1ijwqPPXtyItiwf2OEl2sh3a3PQWQhulsk4aZg96GNZFLo2NhHPHuOzJE" 
+					   data-th-title="#{logo.fio}" target="_blank">
+						<img data-th-src="@{/icons/fio.png}" data-th-alt="#{logo.fio}">			
+					</a>
+				</section>
+			</div>
+			<p class="metadata">
+				<img data-th-src="@{/icons/logo.png}" alt="logo">
+				<small class="copyright">
+					<span data-th-text="#{copyright}"></span> &copy; [[${#dates.format(#dates.createToday(), 'yyyy')}]] 
+					<span data-th-text="#{title}"></span>
+				</small>
+				<span>&bull;</span>
+				<a class="link"
+				   data-th-href="@{/admin/articles}" 
+				   data-th-text="#{link.admin}"></a>
+				<button
+					class="link logout" 
+					data-sec-authorize="isAuthenticated()" 
+					form="logout-form" 
+					type="submit" 
+					data-th-text="#{link.logout}"></button>
+			</p>
+			<section id="social-media">
+				<h2 data-th-text="#{section.social}"></h2>
+				<a href="https://www.facebook.com/" data-th-title="#{logo.facebook}" target="_blank">
+					<img data-th-src="@{/icons/facebook.png}" data-th-alt="#{logo.facebook}">			
+				</a>
+				<a href="https://fcblesno.rajce.idnes.cz/" data-th-title="#{logo.rajce}" target="_blank">
+					<img data-th-src="@{/icons/rajce.png}" data-th-alt="#{logo.rajce}">			
+				</a>
+			</section>
+			<!-- TODO: This form should be located near related submit button, but it affects footer  -->
+			<!-- styling, so for the time being is located outside footer section. -->
+			<form id="logout-form" method="post" data-th-action="@{/logout}">
+			</form>
+		</footer>
+	</div>
+</body>
+</html>

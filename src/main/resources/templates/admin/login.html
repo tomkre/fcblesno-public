@@ -1,0 +1,32 @@
+<!doctype html>
+<html data-layout-decorate="~{layout}">
+<head>
+	<title data-th-text="#{page.admin}"></title>
+</head>
+<body class="admin-page">
+	<h1 data-layout-fragment="headline" data-th-text="'Login'"></h1>
+	<div data-layout-fragment="content" class="form-container">
+		<form method="post" data-th-action="@{/admin/login}">
+			<div class="hidden-field">
+				<input type="hidden" data-th-name="${_csrf.parameterName}" data-th-value="${_csrf.token}">
+			</div>
+			<div class="regular-field">
+				<label for="username" data-th-text="#{admin.username}"></label>
+				<input type="text" name="username">
+			</div>
+			<div class="regular-field">
+				<label for="password" data-th-text="#{admin.password}"></label>
+				<input type="password" name="password">
+				<span class="field-error"
+					  data-th-if="${param.error}"
+					  data-th-text="#{error.login}"></span>
+			</div>
+			<div class="submit-field">
+				<input type="submit"
+					class="btn ok" 
+					data-th-value="#{link.login}">
+			</div>
+		</form>
+	</div>
+</body>
+</html>

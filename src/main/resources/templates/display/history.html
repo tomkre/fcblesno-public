@@ -1,0 +1,16 @@
+<!doctype html>
+<html data-layout-decorate="~{display/article}">
+	<div data-layout-fragment="complementary-data">
+		<div id="legends" class="player-cards-wrapper">
+			<h2 data-th-text="#{post.LEGEND.plural}"></h2>
+			<div class="player-cards">
+				<div data-th-each="player: ${legends}" class="player-card">
+					<a data-th-href="@{/history/players/__${player.id}__}">
+						<h3 data-th-text="${player.fullName}"></h3>
+						<img data-th-src="@{/images/players/__${player.id}__.jpg}"	data-th-alt="${player.fullName}">
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</html>

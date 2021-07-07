@@ -1,0 +1,55 @@
+<!doctype html>
+<html data-layout-decorate="~{layout}">
+<head>
+	<title data-th-text="#{page.admin}"></title>
+</head>
+<body class="admin-page">
+	<h1 data-layout-fragment="headline" 
+		data-th-text="#{page.admin}"></h1>
+	<div data-layout-fragment="content" class="form-container">
+		<form data-th-name="entity-form"
+			  data-th-action="@{/admin/__${contextUrl}__/__${not #strings.isEmpty(entity.id) ? entity.id : 'new'}__}"
+			  data-th-object="${entity}"
+			  data-th-enctype="${entity instanceof T(cz.tomek.fcblesno.model.marking.ContainsPhoto)} ? 'multipart/form-data' : 'application/x-www-form-urlencoded'"
+			  method="post">
+			<div class="hidden-field">
+				<input type="hidden" data-th-field="*{createdAt}">
+				<input type="hidden" data-th-field="*{updatedAt}">
+			</div>
+			<div data-th-if="${entity instanceof T(cz.tomek.fcblesno.model.marking.IdGeneratable)}" 
+				 class="hidden-field">
+				<input type="hidden" data-th-field="*{id}">
+			</div>
+			<div data-th-if="${not (entity instanceof T(cz.tomek.fcblesno.model.marking.IdGeneratable))}" 
+				 class="regular-field">
+				<label for="id" data-th-text="#{entity.id}"></label>
+				<input type="text" data-th-field="*{id}">
+			</div>
+			<th-block data-layout-fragment="variable-fields">
+			</th-block>
+			<hr>
+			<div class="submit-field">
+				<input type="submit"  data-th-value="#{link.save}" class="btn ok">
+				<a data-th-if="${isDeletionPermitted}" 
+			 		data-th-href="@{/admin/__${contextUrl}__/__${entity.id}__/delete}"
+			 		data-th-text="#{link.delete}" 
+					class="btn warn delete"></a>
+				<a data-th-if="${not isDeletionPermitted}"
+					data-th-text="#{link.delete}" 
+					class="btn warn delete disabled"
+					data-th-title="#{msg.entityDeletionNotPermitted}"></a>
+			</div>
+		</form>
+		<div id="delete-confirmation-wrapper" class="modal-wrapper hidden">
+			<div id="delete-confirmation" class="modal">
+				<h2 data-th-text="#{prompt.deletionConfirmation}"></h2>
+				<div class="buttons-wrapper">
+					<button class="btn ok yes" data-th-text="#{btn.yes}"></button>
+					<button class="btn warn no" data-th-text="#{btn.no}"></button>
+				</div>
+			</div>
+		</div>
+		<script type="module" data-th-src="@{/js/entity-form/main.js}"></script>
+	</div>
+</body>
+</html>

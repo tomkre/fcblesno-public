@@ -1,0 +1,12 @@
+<!doctype html>
+<html data-layout-decorate="~{layout}">
+<head>
+	<title data-th-text="#{page.__${team}__}"></title>
+</head>
+<body data-th-class="|${team}-page|">
+	<h1 data-layout-fragment="headline" data-th-text="#{page.__${team}__}"></h1>
+	<div data-layout-fragment="content">
+		<img data-th-src="@{/images/teams/__${team}__.jpg}" data-th-alt="#{page.__${team}__}" class="team-photo">
+	</div> 
+</body>
+</html>

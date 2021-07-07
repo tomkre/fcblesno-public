@@ -1,0 +1,64 @@
+<!doctype html>
+<html data-layout-decorate="~{layout}">
+<head>
+	<title data-th-text="|${game.teamHome.name} - ${game.teamGuest.name}"></title>
+</head>
+<body data-th-class="|${team}-page games-page game-page|">
+	<h1 data-layout-fragment="headline" 
+		data-th-text="|${game.teamHome.name} - ${game.teamGuest.name}  ${game.goalsHome} : ${game.goalsGuest}|">
+	</h1>
+	<div data-layout-fragment="content">
+		<p>
+			<strong data-th-text="#{game.date}"></strong>
+			<span data-th-text="${#dates.format(game.gameDate, 'dd.MM.yyyy, HH:mm')}"></span>
+		</p>
+		<p>
+			<strong data-th-text="#{game.location}"></strong>
+			<span data-th-text="${game.location.name}"></span>
+		</p>
+		<p data-th-with="playersByPost = ${@playerService.extractFromPlayersStatistics(game.playersStatistics)}">
+			<strong data-th-text="#{gameInfo.players}"></strong>
+			<span data-th-each="postPlayers, exLoop: ${playersByPost}"
+				  data-th-with="players = ${postPlayers.value}">
+				<span data-th-each="player, inLoop: ${players}" 
+					  data-th-text="${player.lastName} + ' ' + ${player.firstName} + (${inLoop.index + 1 < #lists.size(players)} ? ', ' : '')"></span>
+			    <span data-th-if="${exLoop.index + 1 < #maps.size(playersByPost)}"> - </span>
+			</span>
+		</p>
+		<p data-th-with="shooters = ${@playerStatisticService.extractShooters(game.playersStatistics)}">
+			<strong data-th-text="#{playerStatistic.goals}"></strong>
+			<span data-th-each="ps, loop: ${shooters}">
+				<span data-th-with="player = ${ps.player}"
+					  data-th-text="${player.lastName} + ' ' + ${player.firstName} 
+					  			 + (${ps.goals > 1} ? ' ' + ${ps.goals} : '') 
+					  			 + (${loop.index + 1 < #lists.size(shooters)} ? ', ' : '')"></span>
+			</span>
+		</p>
+		<p data-th-with="yellowCardHolders = ${@playerStatisticService.extractYellowCardHolders(game.playersStatistics)}">
+			<strong data-th-text="#{playerStatistic.yellowCards}"></strong>
+			<span data-th-each="ps, loop: ${yellowCardHolders}">
+				<span data-th-with="player = ${ps.player}"
+					  data-th-text="${player.lastName} + ' ' + ${player.firstName} 
+					  			 + (${ps.yellowCards > 1} ? ' ' + ${ps.yellowCards} : '') 
+					  			 + (${loop.index + 1 < #lists.size(yellowCardHolders)} ? ', ' : '')"></span>
+			</span>
+		</p>
+		<p data-th-with="redCardHolders = ${@playerStatisticService.extractRedCardHolders(game.playersStatistics)}">
+			<strong data-th-text="#{playerStatistic.redCards}"></strong>
+			<span data-th-each="ps, loop: ${redCardHolders}">
+				<span data-th-with="player = ${ps.player}"
+					  data-th-text="${player.lastName} + ' ' + ${player.firstName} 
+					  			 + (${loop.index + 1 < #lists.size(redCardHolders)} ? ', ' : '')"></span>
+			</span>
+		</p>
+		<p>
+			<strong data-th-text="#{gameInfo.fans}"></strong>
+			<span data-th-text="${game.fans}"></span>
+		</p>
+		<div class="commentary" data-th-if="${game.article != null}">
+			<strong data-th-text="|#{gameInfo.content}: |"></strong>
+			<th-block data-th-utext="${game.article.content}"></th-block>
+		</div>
+	</div>
+</body>
+</html>

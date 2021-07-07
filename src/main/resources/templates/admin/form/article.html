@@ -1,0 +1,15 @@
+<!doctype html>
+<html data-layout-decorate="~{admin/form/app-entity}">
+<head>
+	<title data-th-text="#{page.admin}"></title>
+	<link rel="stylesheet" data-th-href="@{/js/lib/jqte-1.4.0/jquery-te-1.4.0.css}">
+	<script data-th-src="@{/js/lib/jqte-1.4.0/jquery-te-1.4.0.min.js}"></script>
+</head>
+<body class="admin-page">
+	<th-block data-layout-fragment="variable-fields">
+		<th-block data-th-with="prefix = ''" 
+				  data-th-insert="~{partials::article-form}">
+		</th-block>
+	</th-block>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html data-layout-decorate="~{layout}">
+<head>
+	<title data-th-text="|${player.fullName}|"></title>
+</head>
+<body data-th-class="|${team}-page players-page player-page|">
+	<h1 data-layout-fragment="headline" data-th-text="${player.fullName}"></h1>
+	<div data-layout-fragment="content">
+		<div class="player-info">
+			<dl>
+				<dt data-th-text="#{player.firstName}"></dt>
+				<dd data-th-text="${player.firstName}"></dd>
+				<dt data-th-text="#{player.lastName}"></dt>
+				<dd data-th-text="${player.lastName}"></dd>
+				<dt data-th-text="#{player.birthDate}"></dt>
+				<dd data-th-text="${#dates.format(player.birthDate, 'yyyy')}"></dd>
+				<dt data-th-text="#{player.post}"></dt>
+				<dd data-th-text="#{post.__${player.post}__.singular}"></dd>
+			</dl>
+		</div>
+		<div class="player-profile">
+			<img data-th-src="@{/images/players/__${player.id}__.jpg}" data-th-alt="${player.fullName}">
+		</div>
+		<div class="player-stats">
+			<table class="table-theme"
+				data-th-each="post: ${ {'goalkeeper', 'player'} }"
+				data-th-if="${#lists.size(__${post}__Statistics) gt 0}"
+				data-th-with="fields = ${#strings.arraySplit(
+	 				'numOfGames,__${post eq 'goalkeeper' ?  
+	 				'shotouts,receivedGoals,receivedGoalsPerGame' : ''}__,goals,assists,__${post ne 'goalkeeper' ?
+	 				'plusMinus' : ''}__,yellowCards,redCards',
+	 				',')}">
+				<tr>
+					<th data-th-text="#{playerStatistic.__${post}__}" scope="col"></th>
+					<th data-th-each="field: ${fields}"
+						data-th-text="#{playerStatistic.__${field}__}"
+						scope="col"></th>
+				</tr>
+				<tr data-th-each="ps: ${__${post}__Statistics}">
+					<td data-th-text="${ps.game.league.nameWithTeam}"></td>
+					<td data-th-each="field: ${fields}" data-th-text="${ps.__${field}__}"></td>
+				</tr>
+			</table>
+		</div>
+	</div> 
+</body>
+</html>

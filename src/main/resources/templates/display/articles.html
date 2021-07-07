@@ -1,0 +1,35 @@
+<!doctype html>
+<html data-layout-decorate="~{layout}">
+<head>
+	<title data-th-text="#{page.articles} + ' | ' + #{page.articles.__${articleType}__}"></title>
+</head>
+<body data-th-class="|articles-page ${articleType}-page|">
+	<h1 data-layout-fragment="headline" data-th-text="#{page.articles.__${articleType}__}"></h1>
+	<div data-layout-fragment="content">
+		<table class="table-theme">
+			<tr>
+				<th data-th-each="colName: ${ {'created', 'title'} }"
+					data-th-text="#{article.__${colName}__}"
+					scope="row"></th>
+			</tr>
+			<tr data-th-each="article: ${articles}">
+				<td>
+					<a data-th-href="@{/articles/__${articleType}__/__${article.id}__}"
+					   data-th-text="${#dates.format(article.createdAt, 'dd.MM.yyyy')}"></a>
+				</td>
+				<td>
+					<a data-th-href="@{/articles/__${articleType}__/__${article.id}__}"
+					   data-th-text="${article.title}"></a>
+				</td>
+			</tr>
+		</table>
+		<ul class="pagination menu">
+			<li data-th-each="page: ${#numbers.sequence(1, numberOfPages)}">
+				<a data-th-href="@{/articles/__${articleType}__/__${page}__}" 
+				   data-th-class="${page == currentPage} ? 'current-page'"
+				   data-th-text="${page}"></a>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>

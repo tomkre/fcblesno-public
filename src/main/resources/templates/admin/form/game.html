@@ -1,0 +1,136 @@
+<!doctype html>
+<html data-layout-decorate="~{admin/form/app-entity}">
+<head>
+	<title data-th-text="#{page.admin}"></title>
+	<link rel="stylesheet" data-th-href="@{/js/lib/jqte-1.4.0/jquery-te-1.4.0.css}">
+	<script data-th-src="@{/js/lib/jqte-1.4.0/jquery-te-1.4.0.min.js}"></script>
+</head>
+<body class="admin-page">
+	<th-block data-layout-fragment="variable-fields">
+		<div class="regular-field">
+			<label for="gameDate-date" data-th-text="#{game.date}"></label>
+			<input type="date" id="gameDate-date">
+		</div>
+		<div class="regular-field">
+			<label for="gameDate-time" data-th-text="#{game.time}"></label>
+			<input type="time" id="gameDate-time">
+		</div>
+		<div class="hidden-field">
+			<input type="hidden" data-th-field="*{gameDate}">
+		</div>
+		<div class="regular-field">
+			<label for="league.id" data-th-text="#{game.league}"></label>
+			<select data-th-field="*{league.id}">
+				<option data-th-each="league: ${leagues}" 
+						data-th-value="${league.id}"
+						data-th-text="${league.displayName}">
+			</select>
+		</div> 
+		<div class="regular-field">
+			<label for="location.id" data-th-text="#{game.location}"></label>
+			<select data-th-field="*{location.id}">
+				<option data-th-each="location: ${locations}" 
+						data-th-value="${location.id}"
+						data-th-text="${location.name}">
+			</select>
+		</div> 
+		<div class="regular-field">
+			<label for="fans" data-th-text="#{game.fans}"></label>
+			<div class="subfield">
+				<input type="number" min="0" data-th-field="*{fans}">
+			</div>
+		</div> 
+		<div class="regular-field">
+			<label for="teams" data-th-text="#{game.name}"></label>
+			<div class="subfield">
+				<select data-th-each="suffix: ${ {'Home', 'Guest'} }" 
+						data-th-field="*{team__${suffix}__.id}"
+					    data-th-class="|${#strings.toLowerCase(suffix)}-field|">
+					<option data-th-each="team: ${teams}"
+							data-th-value="${team.id}"
+							data-th-text="${team.name}">
+				</select>
+				<span class="delimiter">:</span>
+			</div>
+		</div>
+		<div class="regular-field">
+			<label for="goals" data-th-text="#{game.result}"></label>
+			<div class="subfield">
+				<input data-th-each="suffix: ${ {'Home', 'Guest'} }"
+					   data-th-field="*{goals__${suffix}__}"
+					   data-th-class="|${#strings.toLowerCase(suffix)}-field|"
+					   min="0"
+					   type="number">
+				<span class="delimiter">:</span>
+			</div>
+		</div>
+		<fieldset>
+			<legend data-th-text="#{game.statistics}"></legend> 
+			<div class="stat-field">
+				<table data-th-with="props = ${ {'post', 'goals', 'assists', 'plusMinus', 'yellowCards', 'redCards'} }">
+					<thead>
+						<tr>
+							<th data-th-text="#{playerStatistic.player}"
+								scope="col"></th>
+							<th data-th-each="col: ${props}"
+								data-th-text="#{playerStatistic.__${col}__}"
+								scope="col"></th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td>
+								<select class="players-selection">
+								</select>
+							</td>
+							<td>
+								<button data-th-text="#{link.add}" 
+										class="add-stat"
+										type="button"></button>
+							</td>
+							<td colspan="5"></td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+		</fieldset>
+		<fieldset>
+			<legend data-th-text="#{game.article}"></legend>
+			<div class="hidden-field">
+				<input data-th-field="*{article.articleType}" type="hidden">
+				<script>
+					var $articleType = $('#article\\.articleType');
+					if (!$articleType.val()) {
+						$articleType.val('GAME');
+					}
+				</script>
+			</div>
+			<th-block data-th-with="prefix = 'article.', photoDir = 'articles', photoName = 'a-' + ${entity.id}" 
+					  data-th-insert="~{partials::article-form}">
+			</th-block>
+		</fieldset>
+		<script data-th-inline="javascript">
+			var fcb = fcb || {};
+			fcb.gameId = /*[[${entity.id}]]*/ '';
+			if (!fcb.gameId) {
+				let leagueId = $('select[id="league.id"]').val();
+				let teamHomeId = $('select[id="teamHome.id"]').val();
+				let teamGuestId = $('select[id="teamGuest.id"]').val();
+				fcb.gameId = `${leagueId}-${teamHomeId}-${teamGuestId}`;
+			}
+			var $articleId = $('#article\\.id');
+			if (!$articleId.val()) {
+				$articleId.val(`a-${fcb.gameId}`);
+			}
+			fcb.msg = {
+				'link.delete': /*[[#{link.delete}]]*/ ''	
+			};
+		</script>
+		
+		<script type="module" data-th-src="@{/js/game-form/main.js}"></script>
+	</th-block>
+</body>
+</html>

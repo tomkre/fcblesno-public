@@ -1,0 +1,186 @@
+/* -------------------- */	
+/* --- layout --------- */	
+/* -------------------- */	
+#container { 
+	margin: 0 auto;
+	position: relative; 
+	max-width: 1200px;
+	#main-content {
+		@include grid(auto 270px, none, 30px);
+	}
+}
+
+/* -------------------- */	
+/* --- header --------- */	
+/* -------------------- */
+header img {
+	@include size(90px);
+}
+
+/* -------------------- */	
+/* --- navigation ----- */	
+/* -------------------- */
+nav {
+	margin-bottom: 35px;
+	& > .mainmenu {
+		display: flex;
+		& li > a {
+			padding: .5em;
+		}
+		& > li {
+			flex: 1;  
+			& > a {
+				background: $menu-bg; 
+				border-right: 1px solid white; 
+				text-transform: uppercase; 
+				&:hover {
+					background: $menu-bg-hover;
+				}
+			}
+			&:last-child a {
+				border-right: none; 
+			}
+			&:hover  {
+				& > a {
+					background: $menu-bg-hover;  
+				}	
+				& > ul {
+					display: flex;
+				}		
+			}
+			.submenu {
+				display: none;
+				left: 0;    
+				position: absolute;
+				width: 100%; 
+				& > li {
+					background: $secondary-bg; 
+					flex: 1; 
+					font-size: .7em; 
+					& > a:hover {
+						text-decoration: underline;  
+					}
+				}
+				& > li:last-child {
+					padding: 5px;  
+					text-transform: uppercase;  
+				}
+			}
+		}
+	}
+}	
+$menu-items: a-team, b-team, futsal, articles;
+$submenu-items: games, players, statistics;
+@each $menu-item in $menu-items {
+	@if $menu-item == articles {
+		$submenu-items: general, interview, tournament;
+	}
+	.#{$menu-item}-page .#{$menu-item}-menu > a {
+		background: $menu-bg-hover; 
+	}
+	.#{$menu-item}-page .#{$menu-item}-menu .submenu {
+		display: flex; 
+	}
+	@each $submenu-item in $submenu-items {
+		.#{$menu-item}-page.#{$submenu-item}-page .#{$menu-item}-menu .#{$submenu-item}-submenu a {
+			text-decoration: underline; 
+		}
+	}
+}
+
+/* -------------------- */	
+/* --- aside ---------- */	
+/* -------------------- */
+aside {
+	section {
+		margin-bottom: 10px;
+		body:not(.admin-page) &.admin-menu,
+		body.admin-page &:not(.admin-menu), {
+			display: none;
+		}
+	}
+	#main-content & h2 {
+		border-width: 0 0 1px 0;
+		font-size: 1em;
+	}
+	.game-info {
+		min-height: 120px;
+		.no-upcoming-game {
+			height: 120px;
+			display: grid;
+			place-content: center;			
+		}
+		& > * {
+			margin-bottom: 10px;
+		}
+		time {
+			font-size: .9em;
+		}
+		.logos-and-goals {
+			@include flex-centered;
+			align-items: center;
+			.result {
+				margin: 0 23px;
+				font-size: 1.5em;
+			}
+			img {
+				@include size(60px);
+			}
+		}
+		.teams-names {
+			display: flex;
+			& > span {
+				flex: 1;
+			}
+		}
+		.hr-wrapper {
+			padding: 0 20px;
+			hr {
+				border-color: #bbbcbf;
+			}
+		}
+	}
+}
+
+/* -------------------- */	
+/* --- main content --- */	
+/* -------------------- */
+#main-content {
+	h1, aside h2 {
+		@include section-headline;
+	}
+}
+
+/* -------------------- */	
+/* --- footer --------- */	
+/* -------------------- */
+footer {
+	@include grid(2fr 1fr 2fr);
+	background: $secondary-bg;
+	margin-top: 60px;
+	.metadata {
+		@include grid(auto);
+		justify-items: center;
+		img {
+			@include size(75px);
+			position: relative;
+			top: -50px;
+		}
+		.copyright {
+			text-align: center;
+		}
+		.link {
+			border: none;
+			background: none;
+			font-size: .9em;
+			@include simple-link;
+			&.logout {
+				margin-top: .5em;
+			}
+		}
+	}
+	section a img {
+		@include size(50px);
+		margin-right: 10px;
+	}
+}

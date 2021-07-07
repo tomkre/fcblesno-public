@@ -1,0 +1,18 @@
+<!doctype html>
+<html data-layout-decorate="~{admin/form/app-entity}">
+<head>
+	<title data-th-text="#{page.admin}"></title>
+</head>
+<body class="admin-page">
+	<th-block data-layout-fragment="variable-fields">
+		<div class="regular-field">
+			<label for="name" data-th-text="#{team.name}"></label>
+			<span data-th-if="${#fields.hasErrors('name')}" 
+				  data-th-errors="*{name}" 
+				  data-th-text="#{error.field.blank}"
+				  class="field-error"></span>
+			<input type="text" data-th-field="*{name}">
+		</div>
+	</th-block>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!doctype html>
+<html data-layout-decorate="~{layout}">
+<head>
+	<title data-th-text="#{page.admin}"></title>
+</head>
+<body data-th-class="admin-page">
+	<h1 data-layout-fragment="headline" data-th-text="#{page.admin}"></h1>
+	<div data-layout-fragment="content">
+		<table class="table-theme">
+			<tr>
+				<th data-th-each="colName: ${ {'id', 'name'} }"
+					data-th-text="#{entity.__${colName}__}"
+					scope="row"></th>
+			</tr>
+			<tr data-th-each="entity: ${entities}" data-th-with="linkToForm = @{/admin/__${contextUrl}__/__${entity.id}__}">
+				<td>
+					<a data-th-href="${linkToForm}" data-th-text="${entity.id}"></a>
+				</td>
+				<td>
+					<a data-th-href="${linkToForm}" data-th-text="${entity.displayName}"></a>
+				</td>
+			</tr>
+		</table>
+		<ul class="pagination menu">
+			<li class="article-filter" data-th-if="${#strings.endsWith(#httpServletRequest.requestURI, 'articles')}">
+				<select id="article-type">
+					<option data-th-each="type: ${T(cz.tomek.fcblesno.model.enums.ArticleType).values()}"
+						data-th-if="${type.name() ne 'GAME'}"
+						data-th-value="${type}"
+						data-th-selected="${type.name() eq #strings.replace(specialParams, 'type=', '')}"
+						data-th-text="#{articleType.__${type}__.plural}"></option>
+				</select>
+			</li>
+			<li data-th-each="page: ${#numbers.sequence(1, numOfPages)}">
+				<a data-th-href="@{/admin/__${contextUrl}__?page=__${page}__
+					__${not #strings.isEmpty(specialParams) ? '&' + specialParams : ''}__}" 
+				   data-th-class="${page == currentPage} ? 'current-page'"
+				   data-th-text="${page}"></a>
+			</li>
+			<li class="new-entity">
+				<a data-th-href="@{/admin/__${contextUrl}__/new}"
+				   data-th-text="#{link.new}"></a>
+			</li>
+		</ul>
+		<div data-th-if="${not #strings.isEmpty(formFeedback)}" id="form-feedback-wrapper" class="modal-wrapper">
+			<div id="form-feedback" class="modal">
+				<h2 data-th-text="#{msg.formFeedback.__${formFeedback}__}"></h2>
+				<div class="buttons-wrapper">
+					<button class="btn ok" data-th-text="#{btn.ok}"></button>
+				</div>
+			</div>
+		</div>
+		<script data-th-src="@{/js/admin-list/main.js}"></script>
+	</div>
+</body>
+</html>

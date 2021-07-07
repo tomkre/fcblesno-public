@@ -1,0 +1,12 @@
+<!doctype html>
+<html data-layout-decorate="~{layout}">
+<head>
+	<title data-th-text="${article.title}"></title>
+</head>
+<body data-th-class="|articles-page ${articleType}-page article-page|">
+	<h1 data-layout-fragment="headline" data-th-text="${article.title}"></h1>
+	<div data-layout-fragment="content">
+		<div data-th-utext="${article.content}"></div>
+	</div>
+</body>
+</html>

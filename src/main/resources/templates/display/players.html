@@ -1,0 +1,22 @@
+<!doctype html>
+<html data-layout-decorate="~{layout}">
+<head>
+	<title data-th-text="#{page.__${team}__} + ' | ' + #{page.team.players}"></title>
+</head>
+<body data-th-class="|${team}-page players-page|">
+	<h1 data-layout-fragment="headline" data-th-text="#{page.team.players}"></h1>
+	<div data-layout-fragment="content">
+		<div data-th-each="players: ${playersByPost}" class="player-cards-wrapper">
+			<h2 data-th-text="#{post.__${players.key}__.plural}"></h2>
+			<div class="player-cards">
+				<div data-th-each="player: ${players.value}" class="player-card">
+					<a data-th-href="@{/__${team}__/players/__${player.id}__}">
+						<h3 data-th-text="${player.fullName}"></h3>
+						<img data-th-src="@{/images/players/__${player.id}__.jpg}"	data-th-alt="${player.fullName}">
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

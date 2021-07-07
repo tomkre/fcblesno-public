@@ -1,0 +1,141 @@
+insert into game(id, game_date, league_id, location_id, fans, team_home_id, team_guest_id, goals_home, goals_guest) values
+	('fu1920-fcbf-sana', '2020-02-23 16:30', 'fu1920', 'pre', 0, 'fcbf', 'sana', 0, 0),
+	('fu1920-fcbf-stra', '2020-02-23 13:30', 'fu1920', 'pre', 0, 'fcbf', 'stra', 0, 0),
+	('fu1920-fcbf-flmb', '2020-02-09 19:30', 'fu1920', 'pre', 0, 'fcbf', 'flmb', 0, 0),
+	('fu1920-bfka-fcbf', '2020-01-19 19:00', 'fu1920', 'pre', 0, 'bfka', 'fcbf', 0, 0),
+	('fu1920-reda-fcbf', '2020-01-19 17:00', 'fu1920', 'pre', 0, 'reda', 'fcbf', 0, 0),
+	('fu1920-rlha-fcbf', '2020-01-12 17:00', 'fu1920', 'pre', 0, 'rlha', 'fcbf', 0, 0),
+	('fu1920-hesa-fcbf', '2020-01-12 14:00', 'fu1920', 'pre', 0, 'hesa', 'fcbf', 0, 0),
+	('fu1920-fcbf-bfka', '2019-12-21 18:00', 'fu1920', 'pre', 0, 'fcbf', 'bfka', 0, 0),
+	('fu1920-fcbf-reda', '2019-12-21 16:30', 'fu1920', 'pre', 0, 'fcbf', 'reda', 0, 0),
+	('fu1920-sana-fcbf', '2019-12-15 16:30', 'fu1920', 'mon', 0, 'sana', 'fcbf', 0, 0),
+	('fu1920-stra-fcbf', '2019-12-15 14:00', 'fu1920', 'mon', 0, 'stra', 'fcbf', 0, 0),
+	('fu1920-fcbf-rlha', '2019-11-24 19:30', 'fu1920', 'pre', 0, 'fcbf', 'rlha', 0, 0),
+	('fu1920-fcbf-hesa', '2019-11-24 16:30', 'fu1920', 'pre', 0, 'fcbf', 'hesa', 0, 0),
+	('fu1920-flmb-fcbf', '2019-11-10 10:30', 'fu1920', 'jar', 0, 'flmb', 'fcbf', 0, 0);
+	
+insert into game(id, game_date, league_id, location_id, fans, team_home_id, team_guest_id, goals_home, goals_guest) values
+	('kp1920-lega-fcba', '2019-11-16 09:00', 'kp1920', 'sev', 0, 'lega', 'fcba', 0, 0),
+	('kp1920-fcba-sena', '2019-11-10 09:00', 'kp1920', 'tpo', 0, 'fcba', 'sena', 0, 0),
+	('kp1920-blaa-fcba', '2019-11-09 08:00', 'kp1920', 'goc', 0, 'blaa', 'fcba', 0, 0),
+	('kp1920-fcba-snoa', '2019-11-02 09:00', 'kp1920', 'tpo', 0, 'fcba', 'snoa', 0, 0),
+	('kp1920-joka-fcba', '2019-10-27 09:00', 'kp1920', 'sev', 0, 'joka', 'fcba', 0, 0),
+	('kp1920-fcba-infa', '2019-10-26 09:00', 'kp1920', 'tpo', 0, 'fcba', 'infa', 0, 0),
+	('kp1920-fcba-hura', '2019-10-13 09:00', 'kp1920', 'tpo', 0, 'fcba', 'hura', 0, 0),
+	('kp1920-nkga-fcba', '2019-10-12 09:00', 'kp1920', 'goc', 1, 'nkga', 'fcba', 6, 4),
+	('kp1920-fcba-lgna', '2019-10-06 09:00', 'kp1920', 'tpo', 3, 'fcba', 'lgna', 2, 5),
+	('kp1920-fcba-czma', '2019-09-29 09:00', 'kp1920', 'tpo', 0, 'fcba', 'czma', 1, 3),
+	('kp1920-flmb-fcba', '2019-09-28 09:00', 'kp1920', 'sev', 2, 'flmb', 'fcba', 3, 1),
+	('kp1920-fcba-bfka', '2019-09-21 09:00', 'kp1920', 'tpo', 7, 'fcba', 'bfka', 9, 4),
+	('kp1920-fcba-giga', '2019-09-15 09:00', 'kp1920', 'tpo', 4, 'fcba', 'giga', 2, 5),
+	('kp1920-piva-fcba', '2019-09-08 09:00', 'kp1920', 'sev', 4, 'piva', 'fcba', 5, 2),
+	('kp1920-fcba-seva', '2019-09-01 09:00', 'kp1920', 'tpo', 0, 'fcba', 'seva', 7, 0);
+	
+insert into game(id, game_date, league_id, location_id, fans, team_home_id, team_guest_id, goals_home, goals_guest) values
+	('1a1920-fcbb-legb', '2019-11-10 10:00', '1a1920', 'tpo', 0, 'fcbb', 'legb', 0, 0),
+	('1a1920-cana-fcbb', '2019-11-09 09:00', '1a1920', 'goc', 0, 'cana', 'fcbb', 0, 0),
+	('1a1920-aera-fcbb', '2019-11-03 08:00', '1a1920', 'goc', 0, 'aera', 'fcbb', 0, 0),
+	('1a1920-pana-fcbb', '2019-10-26 12:00', '1a1920', 'goc', 0, 'pana', 'fcbb', 0, 0),
+	('1a1920-fcbb-cama', '2019-10-20 08:00', '1a1920', 'tpo', 1, 'fcbb', 'cama', 14, 7),
+	('1a1920-fcbb-poha', '2019-10-13 08:00', '1a1920', 'tpo', 1, 'fcbb', 'poha', 1, 8),
+	('1a1920-koja-fcbb', '2019-10-12 10:00', '1a1920', 'goc', 2, 'koja', 'fcbb', 1, 12),
+	('1a1920-fcbb-frdb', '2019-10-06 08:00', '1a1920', 'tpo', 1, 'fcbb', 'frdb', 3, 3),
+	('1a1920-gala-fcbb', '2019-09-29 11:00', '1a1920', 'goc', 7, 'gala', 'fcbb', 10, 6),
+	('1a1920-fcbb-vesa', '2019-09-22 08:00', '1a1920', 'tpo', 3, 'fcbb', 'vesa', 3, 12),
+	('1a1920-hroa-fcbb', '2019-09-21 09:00', '1a1920', 'goc', 1, 'hroa', 'fcbb', 4, 1),
+	('1a1920-fcbb-pena', '2019-09-14 09:00', '1a1920', 'tpo', 2, 'fcbb', 'pena', 2, 3),
+	('1a1920-repa-fcbb', '2019-09-08 08:00', '1a1920', 'gjk', 1, 'repa', 'fcbb', 5, 7),
+	('1a1920-bufa-fcbb', '2019-09-07 08:00', '1a1920', 'goc', 1, 'bufa', 'fcbb', 2, 1),
+	('1a1920-fcbb-bfkc', '2019-09-01 08:00', '1a1920', 'tpo', 2, 'fcbb', 'bfkc', 3, 7);
+	
+insert into game(id, game_date, league_id, location_id, fans, team_home_id, team_guest_id, goals_home, goals_guest) values
+	('kp1819-fcba-sena', '2019-06-22 09:00', 'kp1819', 'tpo', 2, 'fcba', 'sena', 8, 1),
+	('kp1819-fcba-hura', '2019-06-15 09:00', 'kp1819', 'tpo', 0, 'fcba', 'hura', 6, 0),
+	('kp1819-fcba-bfka', '2019-06-09 09:00', 'kp1819', 'tpo', 2, 'fcba', 'bfka', 7, 2),
+	('kp1819-blaa-fcba', '2019-06-08 08:00', 'kp1819', 'goc', 1, 'blaa', 'fcba', 3, 10),
+	('kp1819-joka-fcba', '2019-05-26 08:00', 'kp1819', 'oly', 0, 'joka', 'fcba', 4, 13),
+	('kp1819-fcba-vlca', '2019-05-19 09:00', 'kp1819', 'tpo', 0, 'fcba', 'vlca', 5, 0),
+	('kp1819-fcba-nkga', '2019-05-18 09:00', 'kp1819', 'tpo', 1, 'fcba', 'nkga', 3, 1),
+	('kp1819-lega-fcba', '2019-05-12 09:00', 'kp1819', 'sev', 2, 'lega', 'fcba', 1, 2),
+	('kp1819-flmb-fcba', '2019-05-08 08:00', 'kp1819', 'sev', 2, 'flmb', 'fcba', 2, 3),
+	('kp1819-fcba-giga', '2019-04-24 09:00', 'kp1819', 'tpo', 1, 'fcba', 'giga', 5, 4),
+	('kp1819-lgna-fcba', '2019-04-23 09:00', 'kp1819', 'sev', 2, 'lgna', 'fcba', 4, 2),
+	('kp1819-fcba-infa', '2019-04-14 09:00', 'kp1819', 'tpo', 2, 'fcba', 'infa', 3, 5),
+	('kp1819-seva-fcba', '2019-04-13 09:00', 'kp1819', 'sev', 7, 'seva', 'fcba', 1, 0),
+	('kp1819-fcba-snoa', '2019-03-31 09:00', 'kp1819', 'tpo', 7, 'fcba', 'snoa', 6, 5),
+	('kp1819-rmta-fcba', '2019-03-30 09:00', 'kp1819', 'sev', 0, 'rmta', 'fcba', 3, 5);
+	
+insert into game(id, game_date, league_id, location_id, fans, team_home_id, team_guest_id, goals_home, goals_guest) values
+	('kp1819-sena-fcba', '2018-11-11 09:00', 'kp1819', 'sev', 6, 'sena', 'fcba', 3, 5),
+	('kp1819-hura-fcba', '2018-11-10 10:00', 'kp1819', 'cer', 1, 'hura', 'fcba', 3, 6),
+	('kp1819-bfka-fcba', '2018-11-03 09:00', 'kp1819', 'sev', 5, 'bfka', 'fcba', 4, 4),
+	('kp1819-fcba-blaa', '2018-10-28 09:00', 'kp1819', 'tpo', 0, 'fcba', 'blaa', 5, 0),
+	('kp1819-fcba-joka', '2018-10-27 09:00', 'kp1819', 'tpo', 2, 'fcba', 'joka', 14, 0),
+	('kp1819-vlca-fcba', '2018-10-14 09:00', 'kp1819', 'sev', 1, 'vlca', 'fcba', 3, 3),
+	('kp1819-fcba-lega', '2018-10-13 09:00', 'kp1819', 'tpo', 2, 'fcba', 'lega', 6, 2),
+	('kp1819-nkga-fcba', '2018-10-07 09:00', 'kp1819', 'sev', 1, 'nkga', 'fcba', 7, 4),
+	('kp1819-fcba-flmb', '2018-09-30 09:00', 'kp1819', 'tpo', 2, 'fcba', 'flmb', 1, 9),
+	('kp1819-giga-fcba', '2018-09-29 09:00', 'kp1819', 'sev', 0, 'giga', 'fcba', 10, 3),
+	('kp1819-fcba-lgna', '2018-09-23 09:00', 'kp1819', 'tpo', 1, 'fcba', 'lgna', 7, 2),
+	('kp1819-infa-fcba', '2018-09-16 09:00', 'kp1819', 'sev', 1, 'infa', 'fcba', 6, 5),
+	('kp1819-fcba-seva', '2018-09-15 09:00', 'kp1819', 'tpo', 1, 'fcba', 'seva', 5, 1),
+	('kp1819-snoa-fcba', '2018-09-02 09:00', 'kp1819', 'sev', 4, 'snoa', 'fcba', 5, 3),
+	('kp1819-fcba-rmta', '2018-09-01 09:00', 'kp1819', 'tpo', 8, 'fcba', 'rmta', 5, 5);
+	
+insert into game(id, game_date, league_id, location_id, fans, team_home_id, team_guest_id, goals_home, goals_guest) values
+	('1b1819-fcbb-nxta', '2019-06-08 10:00', '1b1819', 'tpo', 0, 'fcbb', 'nxta', 5, 0),
+	('1b1819-nkla-fcbb', '2019-06-16 12:00', '1b1819', 'sev', 1, 'nkla', 'fcbb', 3, 3),
+	('1b1819-uhka-fcbb', '2019-06-09 11:00', '1b1819', 'gjk', 1, 'uhka', 'fcbb', 3, 5),
+	('1b1819-fcbb-frdb', '2019-06-02 09:00', '1b1819', 'tpo', 2, 'fcbb', 'frdb', 4, 5),
+	('1b1819-ujza-fcbb', '2019-05-25 10:00', '1b1819', 'cer', 2, 'ujza', 'fcbb', 2, 2),
+	('1b1819-fcbb-koja', '2019-05-18 10:00', '1b1819', 'tpo', 0, 'fcbb', 'koja', 5, 0),
+	('1b1819-fcbb-rsca', '2019-05-05 10:00', '1b1819', 'tpo', 0, 'fcbb', 'rsca', 5, 0),
+	('1b1819-cama-fcbb', '2019-05-04 11:00', '1b1819', 'goc', 1, 'cama', 'fcbb', 4, 7),
+	('1b1819-inta-fcbb', '2019-04-28 12:00', '1b1819', 'goc', 5, 'inta', 'fcbb', 5, 8),
+	('1b1819-fcbb-rapa', '2019-04-20 09:00', '1b1819', 'tpo', 0, 'fcbb', 'rapa', 5, 0),
+	('1b1819-gala-fcbb', '2019-04-06 09:00', '1b1819', 'goc', 0, 'gala', 'fcbb', 7, 2);
+	
+insert into game(id, game_date, league_id, location_id, fans, team_home_id, team_guest_id, goals_home, goals_guest) values
+	('1b1819-nxta-fcbb', '2018-11-11 11:00', '1b1819', 'sev', 2, 'nxta', 'fcbb', 5, 5),
+	('1b1819-fcbb-nkla', '2018-10-28 10:00', '1b1819', 'tpo', 1, 'fcbb', 'nkla', 3, 5),
+	('1b1819-fcbb-uhka', '2018-10-27 10:00', '1b1819', 'tpo', 2, 'fcbb', 'uhka', 8, 3),
+	('1b1819-frdb-fcbb', '2018-10-21 10:00', '1b1819', 'gjk', 7, 'frdb', 'fcbb', 8, 10),
+	('1b1819-fcbb-ujza', '2018-10-13 10:00', '1b1819', 'tpo', 1, 'fcbb', 'ujza', 10, 5),
+	('1b1819-rsca-fcbb', '2018-10-06 09:00', '1b1819', 'gjk', 0, 'rsca', 'fcbb', 6, 2),
+	('1b1819-koja-fcbb', '2018-09-30 12:00', '1b1819', 'sev', 0, 'koja', 'fcbb', 8, 0),
+	('1b1819-fcbb-cama', '2018-09-23 10:00', '1b1819', 'tpo', 1, 'fcbb', 'cama', 10, 3),
+	('1b1819-fcbb-inta', '2018-09-15 10:00', '1b1819', 'tpo', 0, 'fcbb', 'inta', 3, 5),
+	('1b1819-rapa-fcbb', '2018-09-08 11:00', '1b1819', 'oly', 0, 'rapa', 'fcbb', 0, 5),
+	('1b1819-fcbb-gala', '2018-09-08 11:00', '1b1819', 'tpo', 3, 'fcbb', 'gala', 8, 3);
+
+insert into game(id, game_date, league_id, location_id, fans, team_home_id, team_guest_id, goals_home, goals_guest) values
+	('fu1819-fcbf-flmb', '2019-02-09 10:30', 'fu1819', 'mon', 10, 'fcbf', 'flmb', 3, 3),
+	('fu1819-sana-fcbf', '2019-01-20 20:30', 'fu1819', 'jar', 10, 'sana', 'fcbf', 8, 0),
+	('fu1819-fcbf-stra', '2019-01-20 18:15', 'fu1819', 'jar', 4, 'fcbf', 'stra', 4, 5),
+	('fu1819-bfkb-fcbf', '2019-01-13 18:30', 'fu1819', 'pre', 12, 'bfkb', 'fcbf', 2, 1),
+	('fu1819-fcbf-reda', '2019-01-13 16:50', 'fu1819', 'pre', 15, 'fcbf', 'reda', 1, 3),
+	('fu1819-lega-fcbf', '2019-01-06 10:30', 'fu1819', 'mon', 7, 'lega', 'fcbf', 8, 1),
+	('fu1819-fcbf-hesa', '2019-01-06 08:00', 'fu1819', 'mon', 3, 'fcbf', 'hesa', 8, 9),
+	('fu1819-fcbf-sana', '2018-12-16 10:30', 'fu1819', 'mon', 9, 'fcbf', 'sana', 1, 11),
+	('fu1819-stra-fcbf', '2018-12-16 08:00', 'fu1819', 'mon', 4, 'stra', 'fcbf', 0, 8),
+	('fu1819-fcbf-bfkb', '2018-12-08 10:30', 'fu1819', 'mon', 8, 'fcbf', 'bfkb', 3, 1),
+	('fu1819-reda-fcbf', '2018-12-08 08:50', 'fu1819', 'mon', 15, 'reda', 'fcbf', 1, 8),
+	('fu1819-fcbf-lega', '2018-12-02 19:30', 'fu1819', 'pre', 20, 'fcbf', 'lega', 1, 3),
+	('fu1819-hesa-fcbf', '2018-12-02 17:00', 'fu1819', 'pre', 15, 'hesa', 'fcbf', 4, 1),
+	('fu1819-flmb-fcbf', '2018-11-25 19:30', 'fu1819', 'pre', 20, 'flmb', 'fcbf', 8, 2);
+
+insert into game(id, game_date, league_id, location_id, fans, team_home_id, team_guest_id, goals_home, goals_guest) values
+	('kp1718-fcba-suma', '2018-06-30 00:00', 'kp1718', 'tpo', 0, 'fcba', 'suma', 0, 0),
+	('1b1718-fcbb-suma', '2018-06-30 00:00', '1b1718', 'tpo', 0, 'fcbb', 'suma', 0, 0),
+	('kp1617-fcba-suma', '2017-06-30 00:00', 'kp1617', 'tpo', 0, 'fcba', 'suma', 0, 0),
+	('1b1617-fcbb-suma', '2017-06-30 00:00', '1b1617', 'tpo', 0, 'fcbb', 'suma', 0, 0),
+	('kp1516-fcba-suma', '2016-06-30 00:00', 'kp1516', 'tpo', 0, 'fcba', 'suma', 0, 0),
+	('2a1516-fcbb-suma', '2016-06-30 00:00', '2a1516', 'tpo', 0, 'fcbb', 'suma', 0, 0),
+	('op1415-fcba-suma', '2015-06-30 00:00', 'op1415', 'tpo', 0, 'fcba', 'suma', 0, 0),
+	('2b1415-fcbb-suma', '2015-06-30 00:00', '2b1415', 'tpo', 0, 'fcbb', 'suma', 0, 0),
+	('op1314-fcba-suma', '2014-06-30 00:00', 'op1314', 'tpo', 0, 'fcba', 'suma', 0, 0),
+	('2b1314-fcbb-suma', '2014-06-30 00:00', '2b1314', 'tpo', 0, 'fcbb', 'suma', 0, 0),
+	('1a1213-fcba-suma', '2013-06-30 00:00', '1a1213', 'tpo', 0, 'fcba', 'suma', 0, 0),
+	('2d1213-fcbb-suma', '2013-06-30 00:00', '2d1213', 'tpo', 0, 'fcbb', 'suma', 0, 0),
+	('2d1112-fcba-suma', '2012-06-30 00:00', '2d1112', 'tpo', 0, 'fcba', 'suma', 0, 0);
+	

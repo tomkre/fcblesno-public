@@ -1,0 +1,57 @@
+<!doctype html>
+<html data-layout-decorate="~{layout}">
+<head>
+	<title data-th-text="#{page.__${team}__} + ' | ' + #{page.team.games}"></title>
+</head>
+<body data-th-class="|${team}-page games-page|">
+	<h1 data-layout-fragment="headline" data-th-text="#{page.team.games}"></h1>
+	<div data-layout-fragment="content">
+		<table id="games-table" class="table-theme">
+			<tr>
+				<th data-th-each="colName: ${ {'date', 'time', 'location', 'name', 'result'} }"
+					data-th-class="${#strings.contains('time', colName)} ? 'desktop'"
+					data-th-text="#{game.__${colName}__}" scope="col"></th>
+			</tr>
+			<tr data-th-each="game: ${games}">
+				<td >
+					<span data-th-text="${#dates.format(game.gameDate, 'dd/MM/yyyy')}"></span>
+					<span class="mobile">
+						<br>[[${#dates.format(game.gameDate, 'HH:mm')}]]
+					</span>
+				</td>
+				<td class="desktop" data-th-text="${#dates.format(game.gameDate, 'HH:mm')}"></td>
+				<td data-th-text="${game.location.name}"></td>
+				<td>
+					<span data-th-text="${game.teamHome.name}" 
+						data-th-class="${#strings.startsWith(game.teamHome.id, 'fcb')} ? 'team-fcb'"></span>
+					:
+					<span data-th-text="${game.teamGuest.name}"
+						data-th-class="${#strings.startsWith(game.teamGuest.id, 'fcb')} ? 'team-fcb'"></span>
+				
+				</td>
+				<td>
+					<a data-th-href="@{/__${team}__/games/__${game.id}__}"
+					   data-th-text="${game.goalsHome + ' : ' + game.goalsGuest}">
+					</a>
+				</td>
+			</tr>
+		</table>
+		<script>
+			$('#games-table td').click((e) => window.location = $(e.currentTarget).closest('tr').find('a').attr('href'));
+		</script>
+		<form class="user-form" data-th-action="@{/__${team}__/games}">
+			<select name="leagueId">
+				<option data-th-each="league: ${leagues}" data-th-value="${league.id}" 
+					data-th-text="${league.name}" data-th-selected="${league.id eq selectedLeagueId}"></option>
+			</select>
+			<span class="season-part">
+				<label data-th-if="${team ne 'futsal'}" data-th-each="seasonPart: ${seasonParts}">
+					<input name="seasonPart" type="radio" data-th-value="${seasonPart}" 
+						data-th-checked="${seasonPart eq selectedSeasonPart}">[[#{seasonPart.__${seasonPart}__}]] 
+				</label>&nbsp;
+			</span>
+			<button class="btn ok" data-th-text="#{btn.show}"></button>
+		</form>
+	</div>
+</body>
+</html>

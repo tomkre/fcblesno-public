@@ -1,0 +1,232 @@
+/* -------------------- */	
+/* --- admin ---------- */	
+/* -------------------- */
+$admin-border: 1px solid #292929;
+$admin-primary-bg: #525252;
+$admin-secondary-bg: #757575;
+$admin-terniary-bg: #828282;
+$admin-headline-bg: linear-gradient($admin-primary-bg, $admin-secondary-bg, $admin-primary-bg);
+$admin-pagination-bg: linear-gradient($admin-secondary-bg, $admin-primary-bg, $admin-secondary-bg);
+$admin-selected-row-bg: #b5b3b3;
+$admin-even-row-bg: #f2efef;
+
+@mixin admin-headline {
+	border: $admin-border;
+	background: $admin-headline-bg;
+}
+
+.admin-page #main-content {
+	h1, .table-theme th {
+		@include admin-headline;
+	}
+	.table-theme td, .pagination li,
+	.admin-menu, .form-container,
+	.photo-field img {
+		border: $admin-border;
+	}
+	.table-theme {
+		td {
+			padding: 0;
+			a {
+				padding: 9px 5px;
+			}
+		}
+		tr:nth-child(even) td {
+			background: $admin-even-row-bg;
+		}
+		tr:hover td {
+			background: $admin-selected-row-bg;
+		}
+	}
+	.pagination {
+		li {
+			background: $admin-pagination-bg;
+			a:hover, a.current-page {
+				color: $primary-fg;
+			}
+			&.new-entity, &.article-filter {
+				position: absolute;
+				top: 0;
+			}
+			&.new-entity {
+				right: 0;
+			}
+			&.article-filter {
+				left: 0;
+				select {
+					display: block;
+					padding: .5em;
+				}
+			}
+		}
+	}
+	.admin-menu {
+		h2 {
+			background: $admin-headline-bg;
+			border: none;
+			margin: 0;
+		}
+		ul li a {
+			background: $admin-secondary-bg;
+			border-bottom: $admin-border;
+			padding: 1em 0;
+			&:hover {
+				background: $admin-terniary-bg;
+			}
+		}
+	}
+	.form-container {
+		min-height: 600px;
+		padding: 1em;
+		hr {
+			color: #edeaea;
+		}
+		fieldset {
+			border: none;
+			border-top: 3px solid #edeaea;
+			padding: 0;
+			margin: 1em 0 .5em 0;
+		}
+		input:not([type="submit"]) {
+			height: 1.5em;
+			padding: .3em .5em;
+			&[type="number"] {
+				width: 3em;
+			}
+		}
+		.field-error {
+			color: red;
+			margin-top: .5em;
+			& + input {
+				border: 1px solid red;
+				border-radius: .3em;
+				box-shadow: 0 0 1px red;
+			}
+		}
+		.regular-field {
+			@include grid(25em auto);
+			padding: .5em 0;
+			align-items: center;
+			& > *:nth-child(2) {
+				flex: auto;
+			}
+			.field-error {
+				grid-area: 2 / 2 / 2 / 2;
+			}
+		}
+		.article-field {
+			display: flex;
+			flex-direction: column;
+			padding: .5em 0;
+			label {
+				padding-bottom: .5em;
+			}
+			.field-error {
+				order: 1;
+			}
+			.jqte {
+				margin: 0;
+				border: 1px solid gray;
+			}
+			&.interview .jqte img {
+				width: 150px;
+			}
+		}
+		.photo-field {
+			@include grid(25em auto auto);
+			align-items: center;
+			img {
+				@include size(150px);
+				&.error {
+					border: 1px solid red;
+				}
+			}
+			.photo-input {
+				position: relative;
+				.field-error {
+					position: absolute;
+					top: 30px;
+					left: 5px;
+				}
+			}
+		}
+		.subfield {
+			@include flex-centered;
+			align-items: center;
+			.home-field {
+				order: -1;
+			}
+			.guest-field {
+				order: 1;
+			}
+			.delimiter {
+				margin: 0 .5em;
+			}
+		}
+		.stat-field table {
+			padding-top: .5em;
+			table-layout: auto;
+			tr {
+				td, th {
+					padding: .3em .5em;
+				}
+				& > td:first-child, th:first-child {
+					text-align: left;						
+				}
+			} 
+		}
+		.submit-field {
+			padding-top: 1em;
+			position: relative;
+			text-align: center;
+			.btn.warn {
+				position: absolute;
+				right: 0;
+			}
+		}
+	}
+}
+
+.btn {
+	border: .1em solid $admin-terniary-bg;
+	padding: .5em 1em;
+	font-size: .9em;
+	&:hover {
+		box-shadow: inset 0 0 .1em white;
+		cursor: pointer;
+	}
+	&.ok {
+		background: linear-gradient(#4286f4, #347ff9, #4286f4);
+	}
+	&.warn {
+		background: linear-gradient(#f7635b, #c13932, #f7635b);
+		&.disabled {
+			opacity: .3;
+			cursor: not-allowed;
+		}
+	}
+}
+.modal-wrapper, .modal {
+	display: grid;
+	place-items: center;
+	&.hidden {
+		display: none;
+	}
+}
+.modal-wrapper {
+	position: fixed;
+	background: rgba(0, 0, 0, .7);
+	width: 100%;
+	height: 100%;
+	top: 0; 
+	left: 0;
+	z-index: 1;
+	.modal {
+		h2 {
+			font-size: 1.5em;
+		}
+		width: 400px;
+		height: 200px;
+		background: white;
+	}
+}

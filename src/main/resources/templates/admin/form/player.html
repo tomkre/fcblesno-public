@@ -1,0 +1,48 @@
+<!doctype html>
+<html data-layout-decorate="~{admin/form/app-entity}">
+<head>
+	<title data-th-text="#{page.admin}"></title>
+</head>
+<body class="admin-page">
+	<th-block data-layout-fragment="variable-fields">
+		<div class="regular-field">
+			<label for="firstName" data-th-text="#{player.firstName}"></label>
+			<input type="text" data-th-field="*{firstName}">
+			<span class="field-error"
+				  data-th-if="${#fields.hasErrors('firstName')}"
+				  data-th-error="*{firstName}"
+				  data-th-text="#{error.field.blank}"></span>
+		</div>
+		<div class="regular-field">
+			<label for="lastName" data-th-text="#{player.lastName}"></label>
+			<input type="text" data-th-field="*{lastName}">
+			<span class="field-error"
+				  data-th-if="${#fields.hasErrors('lastName')}"
+				  data-th-error="*{lastName}"
+				  data-th-text="#{error.field.blank}"></span>
+		</div>
+		<div class="regular-field">
+			<label for="birthDate" data-th-text="#{player.birthDate}"></label>
+			<input type="date" data-th-field="*{birthDate}">
+		</div>
+		<div class="regular-field">
+			<label for="post" data-th-text="#{player.post}"></label>
+			<select data-th-field="*{post}">
+				<option data-th-each="post: ${T(cz.tomek.fcblesno.model.enums.Post).values()}"
+						data-th-value="${post}"
+						data-th-text="#{post.__${post}__.singular}"></option>
+			</select>
+		</div>
+		<th-block data-th-replace="~{partials::photo-form}"></th-block>
+		<div class="regular-field">
+			<label data-th-text="#{player.teams}"></label>
+			<div>
+				<th-block data-th-each="teamId, iterStat: ${ {'fcba', 'fcbb', 'fcbf'} }">
+					<label data-th-for="|teams__${iterStat.count}__|" data-th-text="#{team.__${teamId}__}"></label>
+					<input type="checkbox" data-th-field="*{teams}" data-th-value="${teamId}">&nbsp;
+				</th-block>
+			</div>
+		</div>
+	</th-block>
+</body>
+</html>

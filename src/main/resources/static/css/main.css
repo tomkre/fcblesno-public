@@ -1,0 +1,922 @@
+@import url(https://fonts.googleapis.com/css?family=Ubuntu);
+@import url(https://fonts.googleapis.com/css?family=Titillium+Web&display=swap);
+/* -------------------- */
+/* --- common --------- */
+/* -------------------- */
+/* -------------------- */
+/* --- markup --------- */
+/* -------------------- */
+html {
+  background: url(../graphics/background.jpg);
+  color: #3d3e3f;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+body {
+  font-family: "Titillium Web", sans-serif;
+  image-rendering: -webkit-optimize-contrast;
+}
+
+h1, h2, h3 {
+  text-align: center;
+}
+
+h1 {
+  font-size: 1em;
+}
+
+h2 {
+  font-size: 0.8em;
+}
+
+h3 {
+  font-size: 0.7em;
+}
+
+a {
+  color: #3d3e3f;
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+button, input[type=submit] {
+  cursor: pointer;
+}
+
+table, img {
+  width: 100%;
+}
+
+input[type=checkbox] {
+  vertical-align: middle;
+}
+
+td > a, li > a {
+  display: block;
+}
+
+/* -------------------- */
+/* --- classes -------- */
+/* -------------------- */
+.pagination {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin-top: 1.5em;
+}
+.pagination li {
+  background: linear-gradient(#3d7648, #34653e, #3d7648);
+  margin-right: 0.5em;
+}
+.pagination li a {
+  padding: 0.3em 1em;
+}
+.pagination li a:hover, .pagination li a.current-page {
+  background: white;
+  color: #194d19;
+}
+
+table.table-theme {
+  border-collapse: collapse;
+  margin-bottom: 1em;
+}
+table.table-theme th, table.table-theme td {
+  border: 1px solid #194d19;
+  font-size: 0.9em;
+  padding: 9px 5px;
+}
+table.table-theme th {
+  background: linear-gradient(#377242, #458752, #377242);
+  color: white;
+}
+table.table-theme td {
+  background: white;
+  text-align: center;
+}
+table.table-theme tr:nth-child(even) td {
+  background: #e3ede3;
+}
+table.table-theme tr:hover td {
+  background: #b2e6b2;
+  cursor: pointer;
+}
+
+.user-form {
+  padding: 0.5em;
+  border: 1px solid #194d19;
+  display: inline-block;
+  background: #e3ede3;
+}
+.user-form select {
+  height: 30px;
+}
+
+.error-page #main-content h1 {
+  background: linear-gradient(#F80922, #EB7380, #F80922);
+}
+.error-page #main-content .content {
+  padding: 0.5em;
+}
+
+.hidden {
+  display: none;
+}
+
+footer, .link, .btn,
+.menu li, .menu li a {
+  color: white;
+}
+
+.form-container, .article-page .content, .error-page .content,
+.game-page .content, .player-info, aside section {
+  background: white;
+  border: 1px solid #194d19;
+}
+
+.news-item:hover, .player-card:hover {
+  box-shadow: 0 0 5px #194d19;
+}
+
+nav > ul, .content img, .complementary-data img, .jqte img,
+.player-profile, .pagination li, .news-item, .player-card,
+.table-theme tr > * {
+  border: 1px solid #194d19;
+}
+
+.news-item {
+  overflow: hidden;
+}
+
+.stat-field tr > *, .submit-field, header,
+nav > ul > li a, nav > ul > li > ul > li:last-child,
+aside > section > *, footer section {
+  text-align: center;
+}
+
+label, legend, .subfield .delimiter,
+.otazka, .commentary p:first-child::before,
+.player-info dt, .team-fcb, .mainmenu-item > a:hover,
+.game-info time {
+  font-weight: bold;
+}
+
+/* -------------------- */
+/* --- layout --------- */
+/* -------------------- */
+#container {
+  margin: 0 auto;
+  position: relative;
+  max-width: 1200px;
+}
+#container #main-content {
+  display: grid;
+  grid-template-columns: auto 270px;
+  grid-template-rows: none;
+  grid-gap: 30px;
+}
+
+/* -------------------- */
+/* --- header --------- */
+/* -------------------- */
+header img {
+  width: 90px;
+  height: 90px;
+}
+
+/* -------------------- */
+/* --- navigation ----- */
+/* -------------------- */
+nav {
+  margin-bottom: 35px;
+}
+nav > .mainmenu {
+  display: flex;
+}
+nav > .mainmenu li > a {
+  padding: 0.5em;
+}
+nav > .mainmenu > li {
+  flex: 1;
+}
+nav > .mainmenu > li > a {
+  background: linear-gradient(#3d7648, #34653e, #3d7648);
+  border-right: 1px solid white;
+  text-transform: uppercase;
+}
+nav > .mainmenu > li > a:hover {
+  background: linear-gradient(#194d19, #226822);
+}
+nav > .mainmenu > li:last-child a {
+  border-right: none;
+}
+nav > .mainmenu > li:hover > a {
+  background: linear-gradient(#194d19, #226822);
+}
+nav > .mainmenu > li:hover > ul {
+  display: flex;
+}
+nav > .mainmenu > li .submenu {
+  display: none;
+  left: 0;
+  position: absolute;
+  width: 100%;
+}
+nav > .mainmenu > li .submenu > li {
+  background: #226822;
+  flex: 1;
+  font-size: 0.7em;
+}
+nav > .mainmenu > li .submenu > li > a:hover {
+  text-decoration: underline;
+}
+nav > .mainmenu > li .submenu > li:last-child {
+  padding: 5px;
+  text-transform: uppercase;
+}
+
+.a-team-page .a-team-menu > a {
+  background: linear-gradient(#194d19, #226822);
+}
+
+.a-team-page .a-team-menu .submenu {
+  display: flex;
+}
+
+.a-team-page.games-page .a-team-menu .games-submenu a {
+  text-decoration: underline;
+}
+
+.a-team-page.players-page .a-team-menu .players-submenu a {
+  text-decoration: underline;
+}
+
+.a-team-page.statistics-page .a-team-menu .statistics-submenu a {
+  text-decoration: underline;
+}
+
+.b-team-page .b-team-menu > a {
+  background: linear-gradient(#194d19, #226822);
+}
+
+.b-team-page .b-team-menu .submenu {
+  display: flex;
+}
+
+.b-team-page.games-page .b-team-menu .games-submenu a {
+  text-decoration: underline;
+}
+
+.b-team-page.players-page .b-team-menu .players-submenu a {
+  text-decoration: underline;
+}
+
+.b-team-page.statistics-page .b-team-menu .statistics-submenu a {
+  text-decoration: underline;
+}
+
+.futsal-page .futsal-menu > a {
+  background: linear-gradient(#194d19, #226822);
+}
+
+.futsal-page .futsal-menu .submenu {
+  display: flex;
+}
+
+.futsal-page.games-page .futsal-menu .games-submenu a {
+  text-decoration: underline;
+}
+
+.futsal-page.players-page .futsal-menu .players-submenu a {
+  text-decoration: underline;
+}
+
+.futsal-page.statistics-page .futsal-menu .statistics-submenu a {
+  text-decoration: underline;
+}
+
+.articles-page .articles-menu > a {
+  background: linear-gradient(#194d19, #226822);
+}
+
+.articles-page .articles-menu .submenu {
+  display: flex;
+}
+
+.articles-page.general-page .articles-menu .general-submenu a {
+  text-decoration: underline;
+}
+
+.articles-page.interview-page .articles-menu .interview-submenu a {
+  text-decoration: underline;
+}
+
+.articles-page.tournament-page .articles-menu .tournament-submenu a {
+  text-decoration: underline;
+}
+
+/* -------------------- */
+/* --- aside ---------- */
+/* -------------------- */
+aside section {
+  margin-bottom: 10px;
+}
+body:not(.admin-page) aside section.admin-menu, body.admin-page aside section:not(.admin-menu) {
+  display: none;
+}
+#main-content aside h2 {
+  border-width: 0 0 1px 0;
+  font-size: 1em;
+}
+aside .game-info {
+  min-height: 120px;
+}
+aside .game-info .no-upcoming-game {
+  height: 120px;
+  display: grid;
+  place-content: center;
+}
+aside .game-info > * {
+  margin-bottom: 10px;
+}
+aside .game-info time {
+  font-size: 0.9em;
+}
+aside .game-info .logos-and-goals {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+aside .game-info .logos-and-goals .result {
+  margin: 0 23px;
+  font-size: 1.5em;
+}
+aside .game-info .logos-and-goals img {
+  width: 60px;
+  height: 60px;
+}
+aside .game-info .teams-names {
+  display: flex;
+}
+aside .game-info .teams-names > span {
+  flex: 1;
+}
+aside .game-info .hr-wrapper {
+  padding: 0 20px;
+}
+aside .game-info .hr-wrapper hr {
+  border-color: #bbbcbf;
+}
+
+/* -------------------- */
+/* --- main content --- */
+/* -------------------- */
+#main-content h1, #main-content aside h2 {
+  background: linear-gradient(#377242, #458752, #377242);
+  color: white;
+  border: 1px solid #194d19;
+  margin-top: 0;
+  padding: 3px 0;
+  text-shadow: 1px 1px 1px black;
+}
+
+/* -------------------- */
+/* --- footer --------- */
+/* -------------------- */
+footer {
+  display: grid;
+  grid-template-columns: 2fr 1fr 2fr;
+  grid-template-rows: none;
+  grid-gap: 0;
+  background: #226822;
+  margin-top: 60px;
+}
+footer .metadata {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: none;
+  grid-gap: 0;
+  justify-items: center;
+}
+footer .metadata img {
+  width: 75px;
+  height: 75px;
+  position: relative;
+  top: -50px;
+}
+footer .metadata .copyright {
+  text-align: center;
+}
+footer .metadata .link {
+  border: none;
+  background: none;
+  font-size: 0.9em;
+  text-decoration: underline;
+}
+footer .metadata .link:hover {
+  text-decoration: none;
+}
+footer .metadata .link.logout {
+  margin-top: 0.5em;
+}
+footer section a img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+/* -------------------- */
+/* --- news ----------- */
+/* -------------------- */
+#news {
+  display: grid;
+  grid-template-columns: repeat(4, 216px);
+  grid-template-rows: repeat(3, 200px);
+  grid-gap: 0.7em;
+}
+#news .news-item a {
+  height: 100%;
+  display: grid;
+  grid-template-columns: auto 40px;
+  grid-template-rows: 40px auto;
+}
+#news .news-item a h2, #news .news-item a time {
+  background: linear-gradient(#377242, #458752, #377242);
+  color: white;
+  border: 1px solid #194d19;
+  margin-top: 0;
+  padding: 3px 0;
+  text-shadow: 1px 1px 1px black;
+  margin-bottom: 0;
+  display: grid;
+  place-content: center;
+}
+#news .news-item a h2 {
+  padding: 0 0.3em;
+  line-height: 1.3;
+}
+#news .news-item a time {
+  font-size: 0.6em;
+  font-weight: bold;
+  border-left: 1px solid white;
+}
+#news .news-item a img {
+  grid-column: 1/3;
+  height: 100%;
+}
+#news .news-item.top-news {
+  grid-area: 1/1/3/4;
+}
+
+/* -------------------- */
+/* -complementary data- */
+/* -------------------- */
+.complementary-data {
+  margin-top: 1em;
+}
+
+/* -------------------- */
+/* --- articles ------- */
+/* -------------------- */
+.articles-page table tr th:first-child {
+  width: 10em;
+}
+
+/* -------------------- */
+/* --- article ------- */
+/* -------------------- */
+.article-page .content, .article-page .jqte {
+  padding: 1em;
+}
+.article-page:not(.info-page) .content div p, .article-page:not(.info-page) .jqte div p {
+  text-indent: 1.5em;
+}
+.article-page:not(.info-page) .content a, .article-page:not(.info-page) .jqte a {
+  color: blue;
+  text-decoration: underline;
+}
+.article-page:not(.info-page) .content a:hover, .article-page:not(.info-page) .jqte a:hover {
+  text-decoration: none;
+}
+.article-page:not(.info-page) .content .two-img img, .article-page:not(.info-page) .jqte .two-img img {
+  width: 48%;
+  height: 15em;
+}
+.article-page.interview-page .content img {
+  width: 7em;
+  float: right;
+}
+.article-page.interview-page .content .rozhovor-uvod {
+  max-width: 40em;
+  float: left;
+}
+.article-page.interview-page .content p[style="clear:both"] {
+  border-bottom: 1px solid silver;
+  padding: 1em;
+}
+.article-page.tournament-page .zapas-turnaj h3, .article-page.history-page .content h2 {
+  font-size: 1em !important;
+  margin-top: 2em;
+  padding: 0.3em 0;
+  border: solid gray;
+  border-width: 1px 0;
+}
+.article-page.history-page .content h2 {
+  position: relative;
+}
+.article-page.history-page .content h2 a {
+  font-size: 0.9em;
+  font-weight: normal;
+  position: absolute;
+  right: 1em;
+}
+.article-page.history-page .content h2 a::before, .article-page.history-page .content h2 a::after {
+  color: #3d3e3f;
+}
+.article-page.history-page .content h2 a::before {
+  content: "[ ";
+}
+.article-page.history-page .content h2 a::after {
+  content: " ]";
+}
+
+/* -------------------- */
+/* --- game -------- */
+/* -------------------- */
+.game-page .content {
+  padding: 1em;
+}
+.game-page .content > p strong:first-child::after {
+  content: ": ";
+}
+.game-page .content p {
+  line-height: 1.6;
+}
+.game-page .content .commentary p {
+  text-indent: 1.5em;
+}
+
+/* -------------------- */
+/* --- players -------- */
+/* -------------------- */
+.player-cards-wrapper h2, .player-cards-wrapper h3 {
+  background: linear-gradient(#377242, #458752, #377242);
+  color: white;
+  border: 1px solid #194d19;
+  margin-top: 0;
+  padding: 3px 0;
+  text-shadow: 1px 1px 1px black;
+}
+.player-cards-wrapper h3 {
+  border: none;
+  margin-bottom: 0;
+}
+.player-cards-wrapper .player-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.player-cards-wrapper .player-cards .player-card {
+  margin: 10px;
+  width: 120px;
+  height: 140px;
+}
+.player-cards-wrapper .player-cards .player-card img {
+  height: 115px;
+}
+
+/* -------------------- */
+/* --- player -------- */
+/* -------------------- */
+.player-page .content {
+  display: grid;
+  grid-template-columns: auto 15em;
+  grid-template-rows: 15em auto;
+  grid-gap: 10px;
+}
+.player-page .content .player-info {
+  padding: 1em;
+}
+.player-page .content .player-info dl {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: none;
+  grid-gap: 0;
+  font-size: 1.3em;
+  height: 100%;
+}
+.player-page .content .player-info dl dt::after {
+  content: ":";
+}
+.player-page .content .player-profile img {
+  height: 100%;
+}
+.player-page .content .player-stats {
+  grid-column: 1/3;
+}
+.player-page .content .player-stats tr:nth-last-child(-n+4) td {
+  font-weight: bold;
+}
+
+/* -------------------- */
+/* --- team ----------- */
+/* -------------------- */
+.team-photo {
+  /*@include size(880px, 590px);*/
+  max-width: 880px;
+  max-height: 590px;
+}
+
+/* -------------------- */
+/* --- admin ---------- */
+/* -------------------- */
+.admin-page #main-content h1, .admin-page #main-content .table-theme th {
+  border: 1px solid #292929;
+  background: linear-gradient(#525252, #757575, #525252);
+}
+.admin-page #main-content .table-theme td, .admin-page #main-content .pagination li,
+.admin-page #main-content .admin-menu, .admin-page #main-content .form-container,
+.admin-page #main-content .photo-field img {
+  border: 1px solid #292929;
+}
+.admin-page #main-content .table-theme td {
+  padding: 0;
+}
+.admin-page #main-content .table-theme td a {
+  padding: 9px 5px;
+}
+.admin-page #main-content .table-theme tr:nth-child(even) td {
+  background: #f2efef;
+}
+.admin-page #main-content .table-theme tr:hover td {
+  background: #b5b3b3;
+}
+.admin-page #main-content .pagination li {
+  background: linear-gradient(#757575, #525252, #757575);
+}
+.admin-page #main-content .pagination li a:hover, .admin-page #main-content .pagination li a.current-page {
+  color: #3d3e3f;
+}
+.admin-page #main-content .pagination li.new-entity, .admin-page #main-content .pagination li.article-filter {
+  position: absolute;
+  top: 0;
+}
+.admin-page #main-content .pagination li.new-entity {
+  right: 0;
+}
+.admin-page #main-content .pagination li.article-filter {
+  left: 0;
+}
+.admin-page #main-content .pagination li.article-filter select {
+  display: block;
+  padding: 0.5em;
+}
+.admin-page #main-content .admin-menu h2 {
+  background: linear-gradient(#525252, #757575, #525252);
+  border: none;
+  margin: 0;
+}
+.admin-page #main-content .admin-menu ul li a {
+  background: #757575;
+  border-bottom: 1px solid #292929;
+  padding: 1em 0;
+}
+.admin-page #main-content .admin-menu ul li a:hover {
+  background: #828282;
+}
+.admin-page #main-content .form-container {
+  min-height: 600px;
+  padding: 1em;
+}
+.admin-page #main-content .form-container hr {
+  color: #edeaea;
+}
+.admin-page #main-content .form-container fieldset {
+  border: none;
+  border-top: 3px solid #edeaea;
+  padding: 0;
+  margin: 1em 0 0.5em 0;
+}
+.admin-page #main-content .form-container input:not([type=submit]) {
+  height: 1.5em;
+  padding: 0.3em 0.5em;
+}
+.admin-page #main-content .form-container input:not([type=submit])[type=number] {
+  width: 3em;
+}
+.admin-page #main-content .form-container .field-error {
+  color: red;
+  margin-top: 0.5em;
+}
+.admin-page #main-content .form-container .field-error + input {
+  border: 1px solid red;
+  border-radius: 0.3em;
+  box-shadow: 0 0 1px red;
+}
+.admin-page #main-content .form-container .regular-field {
+  display: grid;
+  grid-template-columns: 25em auto;
+  grid-template-rows: none;
+  grid-gap: 0;
+  padding: 0.5em 0;
+  align-items: center;
+}
+.admin-page #main-content .form-container .regular-field > *:nth-child(2) {
+  flex: auto;
+}
+.admin-page #main-content .form-container .regular-field .field-error {
+  grid-area: 2/2/2/2;
+}
+.admin-page #main-content .form-container .article-field {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5em 0;
+}
+.admin-page #main-content .form-container .article-field label {
+  padding-bottom: 0.5em;
+}
+.admin-page #main-content .form-container .article-field .field-error {
+  order: 1;
+}
+.admin-page #main-content .form-container .article-field .jqte {
+  margin: 0;
+  border: 1px solid gray;
+}
+.admin-page #main-content .form-container .article-field.interview .jqte img {
+  width: 150px;
+}
+.admin-page #main-content .form-container .photo-field {
+  display: grid;
+  grid-template-columns: 25em auto auto;
+  grid-template-rows: none;
+  grid-gap: 0;
+  align-items: center;
+}
+.admin-page #main-content .form-container .photo-field img {
+  width: 150px;
+  height: 150px;
+}
+.admin-page #main-content .form-container .photo-field img.error {
+  border: 1px solid red;
+}
+.admin-page #main-content .form-container .photo-field .photo-input {
+  position: relative;
+}
+.admin-page #main-content .form-container .photo-field .photo-input .field-error {
+  position: absolute;
+  top: 30px;
+  left: 5px;
+}
+.admin-page #main-content .form-container .subfield {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.admin-page #main-content .form-container .subfield .home-field {
+  order: -1;
+}
+.admin-page #main-content .form-container .subfield .guest-field {
+  order: 1;
+}
+.admin-page #main-content .form-container .subfield .delimiter {
+  margin: 0 0.5em;
+}
+.admin-page #main-content .form-container .stat-field table {
+  padding-top: 0.5em;
+  table-layout: auto;
+}
+.admin-page #main-content .form-container .stat-field table tr td, .admin-page #main-content .form-container .stat-field table tr th {
+  padding: 0.3em 0.5em;
+}
+.admin-page #main-content .form-container .stat-field table tr > td:first-child, .admin-page #main-content .form-container .stat-field table tr th:first-child {
+  text-align: left;
+}
+.admin-page #main-content .form-container .submit-field {
+  padding-top: 1em;
+  position: relative;
+  text-align: center;
+}
+.admin-page #main-content .form-container .submit-field .btn.warn {
+  position: absolute;
+  right: 0;
+}
+
+.btn {
+  border: 0.1em solid #828282;
+  padding: 0.5em 1em;
+  font-size: 0.9em;
+}
+.btn:hover {
+  box-shadow: inset 0 0 0.1em white;
+  cursor: pointer;
+}
+.btn.ok {
+  background: linear-gradient(#4286f4, #347ff9, #4286f4);
+}
+.btn.warn {
+  background: linear-gradient(#f7635b, #c13932, #f7635b);
+}
+.btn.warn.disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.modal-wrapper, .modal {
+  display: grid;
+  place-items: center;
+}
+.modal-wrapper.hidden, .modal.hidden {
+  display: none;
+}
+
+.modal-wrapper {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+.modal-wrapper .modal {
+  width: 400px;
+  height: 200px;
+  background: white;
+}
+.modal-wrapper .modal h2 {
+  font-size: 1.5em;
+}
+
+@media screen and (max-width: 600px) {
+  #container #main-content {
+    display: grid;
+    grid-template-columns: none;
+    grid-template-rows: none;
+    grid-gap: 15px;
+  }
+
+  .news-item {
+    width: 90vw !important;
+    height: 60vw !important;
+  }
+}
+@media screen and (max-width: 1250px) {
+  #news {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 1em;
+  }
+
+  .news-item {
+    width: 205px;
+    height: 200px;
+    margin: 0.5em;
+  }
+}
+.mobile {
+  display: none;
+}
+
+@media screen and (max-width: 420px) {
+  .mainmenu-item-label {
+    font-size: 0.7em;
+  }
+
+  .history-page .content h2 {
+    text-align: left;
+  }
+
+  .player-info, .player-profile {
+    grid-column: 1/3;
+  }
+
+  .player-profile {
+    order: -1;
+  }
+
+  .games-page .table-theme td {
+    font-size: 0.7em;
+  }
+
+  .interview-page .content .rozhovor-uvod + img {
+    display: block;
+    float: none;
+    margin: 0 auto;
+    width: 70%;
+  }
+
+  .user-form {
+    display: grid;
+    grid-gap: 1em;
+    justify-items: center;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */

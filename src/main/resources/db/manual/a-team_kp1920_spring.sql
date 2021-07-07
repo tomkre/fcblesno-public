@@ -1,0 +1,16 @@
+insert into game(id, game_date, league_id, location_id, fans, team_home_id, team_guest_id, goals_home, goals_guest) values
+	('kp1920-seva-fcba', '2020-03-28 09:00', 'kp1920', 'sev', 0, 'seva', 'fcba', 0, 0),
+	('kp1920-fcba-piva', '2020-03-29 09:00', 'kp1920', 'tpo', 0, 'fcba', 'piva', 0, 0),
+	('kp1920-giga-fcba', '2020-04-05 09:00', 'kp1920', 'sev', 0, 'giga', 'fcba', 0, 0),
+	('kp1920-fcba-flmb', '2020-04-18 09:00', 'kp1920', 'tpo', 0, 'fcba', 'flmb', 0, 0),
+	('kp1920-czma-fcba', '2020-04-25 09:00', 'kp1920', 'sev', 0, 'czma', 'fcba', 0, 0),
+	('kp1920-lgna-fcba', '2020-04-26 09:00', 'kp1920', 'sev', 0, 'lgna', 'fcba', 0, 0),
+	('kp1920-fcba-nkga', '2020-05-09 09:00', 'kp1920', 'tpo', 0, 'fcba', 'nkga', 0, 0),
+	('kp1920-hura-fcba', '2020-05-10 10:00', 'kp1920', 'cer', 0, 'hura', 'fcba', 0, 0),
+	('kp1920-bfka-fcba', '2020-05-17 09:00', 'kp1920', 'goc', 0, 'bfka', 'fcba', 0, 0),
+	('kp1920-infa-fcba', '2020-05-23 09:00', 'kp1920', 'sev', 0, 'infa', 'fcba', 0, 0),
+	('kp1920-joka-fcba', '2020-05-24 09:00', 'kp1920', 'oly', 0, 'joka', 'fcba', 0, 0),
+	('kp1920-snoa-fcba', '2020-05-30 09:00', 'kp1920', 'goc', 0, 'snoa', 'fcba', 0, 0),
+	('kp1920-fcba-blaa', '2020-06-06 09:00', 'kp1920', 'tpo', 0, 'fcba', 'blaa', 0, 0),
+	('kp1920-sena-fcba', '2020-06-07 09:00', 'kp1920', 'sev', 0, 'sena', 'fcba', 0, 0),
+	('kp1920-fcba-lega', '2020-06-20 09:00', 'kp1920', 'tpo', 0, 'fcba', 'lega', 0, 0);

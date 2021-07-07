@@ -1,0 +1,23 @@
+version: "3.5"
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/fcblesno
+      SPRING_DATASOURCE_USER: fcblesno
+      SPRING_DATASOURCE_PASSWORD: pwd_db_changeme
+      SPRING_SECURITY_USER_NAME: admin
+      SPRING_SECURITY_USER_PASSWORD: pwd_sec_changeme
+      SPRING_RESOURCES_STATICLOCATIONS: classpath:/static,file:/src/static
+    depends_on:
+      - db
+  db:
+    image: postgres:10-alpine
+    ports:
+      - "6432:5432"
+    environment:
+      POSTGRES_DB: fcblesno
+      POSTGRES_USER: fcblesno
+      POSTGRES_PASSWORD: pwd_db_changeme

@@ -1,0 +1,55 @@
+@media screen and (max-width: 600px) {
+	#container #main-content {
+		@include grid(none, none, 15px);
+	}
+	.news-item {
+		width: 90vw !important;
+		height: 60vw !important;
+	}
+}
+
+@media screen and (max-width: 1250px) {
+	#news {
+		@include flex-centered;
+		flex-wrap: wrap;
+		margin-bottom: 1em;
+	}
+	.news-item {
+		width: 205px;
+		height: 200px;
+		margin: .5em;
+	}
+}
+
+.mobile {
+	display: none;	
+}
+
+@media screen and (max-width: 420px) {
+	.mainmenu-item-label {
+		font-size: .7em;
+	}
+	.history-page .content h2 {
+		text-align: left;
+	}
+	.player-info, .player-profile {
+		grid-column: 1 / 3;
+	}
+	.player-profile {
+		order: -1;
+	}
+	.games-page .table-theme td {
+		font-size: .7em;
+	}
+	.interview-page .content .rozhovor-uvod + img {
+		display: block;
+		float: none;
+		margin: 0 auto;
+		width: 70%;
+	}
+	.user-form {
+		display: grid;
+		grid-gap: 1em;
+		justify-items: center;
+	}
+}

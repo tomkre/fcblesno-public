@@ -1,0 +1,35 @@
+<!doctype html>
+<html data-layout-decorate="~{layout}">
+<head>
+	<title data-th-text="#{page.__${team}__} + ' | ' + #{page.team.statistics}"></title>
+</head>
+<body data-th-class="|${team}-page statistics-page|">
+	<h1 data-layout-fragment="headline" data-th-text="#{page.team.statistics}"></h1>
+	<div data-layout-fragment="content">
+		<table class="table-theme stats-table" data-th-each="post: ${ {'goalkeeper', 'player'} }"
+			   data-th-with="fields = ${#strings.arraySplit(
+				'numOfGames,__${post eq 'goalkeeper' ? 
+				'shotouts,receivedGoals,receivedGoalsPerGame' : ''}__,goals,assists,__${post ne 'goalkeeper' ? 
+				'plusMinus' : ''}__,yellowCards,redCards', 
+				',')}">
+			<tr>
+				<th data-th-text="#{playerStatistic.__${post}__}"></th>
+				<th data-th-each="field: ${fields}"
+					data-th-text="#{playerStatistic.__${field}__}"></th>
+			</tr>
+			<tr data-th-each="ps: ${__${post}__Statistics}">
+				<td>
+					<a data-th-with="player = ${ps.player}" 
+					   data-th-href="@{/__${player.teams[0].contextPath}__/players/__${player.id}__}" 
+					   data-th-text="${player.fullName}"></a>
+				</td>
+				<td data-th-each="field: ${fields}"
+					data-th-text="${ps.__${field}__}"></td>
+			</tr>
+		</table>
+		<script>
+			$('.stats-table td').click((e) => window.location = $(e.currentTarget).closest('tr').find('a').attr('href'));
+		</script>
+	</div>
+</body>
+</html>

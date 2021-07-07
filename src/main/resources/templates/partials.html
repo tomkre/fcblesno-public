@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<!-- article form -->
+	<th-block data-th-fragment="article-form">
+		<div data-th-if="${#strings.isEmpty(prefix)}" class="regular-field">
+			<label for="articleType" data-th-text="#{article.type}"></label>
+			<select data-th-field="*{articleType}">
+				<option data-th-each="articleType: ${T(cz.tomek.fcblesno.model.enums.ArticleType).values()}"
+					data-th-value="${articleType}"
+					data-th-text="#{articleType.__${articleType}__.singular}"></option>
+			</select>
+		</div>
+		<div class="article-field">
+			<label data-th-for="|${prefix}title|" data-th-text="#{article.title}"></label>
+			<span data-th-if="${#fields.hasErrors('__${prefix}__title')}" 
+				  data-th-errors="*{__${prefix}__title}" 
+				  data-th-text="#{error.field.blank}"
+				  class="field-error"></span>
+			<input type="text" data-th-field="*{__${prefix}__title}">
+		</div>
+		<div class="article-field" 
+			 data-th-classappend="${!#strings.isEmpty(entity.id) and #strings.contains(entity.id, 'a-int')} ? 'interview'">
+			<label data-th-for="|${prefix}content|" data-th-text="#{article.content}"></label>
+			<textarea class="article-content" data-th-field="*{__${prefix}__content}"></textarea>
+		</div>
+		<div class="hidden-field">
+			<input data-th-if="${not #strings.isEmpty(prefix)}"
+				   data-th-field="*{__${prefix}__id}"
+				   type="hidden">
+			<input data-th-each="field: ${ {'createdAt', 'updatedAt'} }"
+				   data-th-field="*{__${prefix}____${field}__}"
+				   type="hidden">
+		</div>
+		<th-block data-th-insert="~{partials::photo-form}">
+		</th-block>
+		<div class="regular-field">
+			<div>
+				<label for="publish" data-th-text="#{article.publish}"></label>
+				<input id="publish" name="publish" type="checkbox">
+			</div>
+			<input id="publishedAt" data-th-field="*{__${prefix}__publishedAt}" type="datetime-local">
+		</div>
+		<script type="module" data-th-src="@{/js/article-form/main.js}"></script>
+	</th-block>
+	
+	<!-- entity-photo -->
+	<th-block data-th-fragment="photo-form">
+		<div class="photo-field" data-th-with="photoDir = ${photoDir ?: contextUrl}, photoName = ${photoName ?: entity.id}">
+			<label for="photo" data-th-text="#{entity.photo}"></label>
+			<img id="entity-photo"
+				data-th-src="@{/images/__${photoDir}__/__${photoName}__.jpg}"
+				data-th-onerror="|this.src = '@{/images/__${photoDir}__/default.jpg}'|" 
+				data-th-alt="${photoName}">
+			<div class="photo-input">
+				<input type="file" id="photo" name="photo">
+				<span class="field-error hidden" data-th-text="#{error.file.maxSizeExceeded}"></span>
+			</div>
+		</div>
+		<script type="module" data-th-src="@{/js/photo-form/main.js}"></script>
+	</th-block>
+</body>
+</html>

@@ -1,0 +1,76 @@
+/* -------------------- */	
+/* --- game -------- */	
+/* -------------------- */
+.game-page .content {
+	padding: 1em;
+	& > p strong:first-child::after {
+		content: ': ';
+	}
+	p {
+		line-height: 1.6;
+	}
+	.commentary p {
+		text-indent: 1.5em;
+	}
+}
+
+/* -------------------- */	
+/* --- players -------- */	
+/* -------------------- */
+.player-cards-wrapper {
+	h2, h3 {
+		@include section-headline;
+	}
+	h3 {
+		border: none;
+		margin-bottom: 0;
+	}	
+	.player-cards {
+		@include flex-centered;
+		flex-wrap: wrap;
+		margin-bottom: 10px;
+		.player-card {
+			margin: 10px;
+			@include size(120px, 140px);
+			img {
+				height: 115px;
+			}
+		}
+	}
+}
+
+/* -------------------- */	
+/* --- player -------- */	
+/* -------------------- */
+.player-page .content {
+	@include grid(auto 15em, 15em auto, 10px);
+	.player-info {
+		padding: 1em;
+		dl {
+			@include grid(1fr 1fr);
+			font-size: 1.3em;
+			height: 100%;
+			dt::after {
+				content: ':';
+			}
+		}
+	}
+	.player-profile img {
+		height: 100%;
+	}
+	.player-stats {
+		grid-column: 1 / 3;
+		tr:nth-last-child(-n+4) td {
+			font-weight: bold;
+		}
+	}
+}
+
+/* -------------------- */	
+/* --- team ----------- */	
+/* -------------------- */
+.team-photo {
+	/*@include size(880px, 590px);*/
+	max-width: 880px;
+	max-height: 590px;
+}

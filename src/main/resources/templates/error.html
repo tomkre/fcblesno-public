@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html data-layout-decorate="~{layout}">
+<head>
+	<meta charset="UTF-8">
+	<title data-th-text="#{error.generic.headline}"></title>
+</head>
+<body class="error-page">
+	<h1 data-layout-fragment="headline" data-th-text="#{error.generic.headline}"></h1>
+	<div data-layout-fragment="content">
+		<th-block data-th-switch="${error}">
+			<span data-th-case="'Not Found'" data-th-text="#{error.notFound}"></span>
+			<span data-th-case="*" data-th-text="#{error.generic.content}"></span>
+		</th-block>
+	</div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!doctype html>
+<html data-layout-decorate="~{admin/form/app-entity}">
+<head>
+	<title data-th-text="#{page.admin}"></title>
+</head>
+<body class="admin-page">
+	<th-block data-layout-fragment="variable-fields">
+		<div class="regular-field">
+			<label for="leagueName" data-th-text="#{league.leagueName}"></label>
+			<input type="text" data-th-field="*{leagueName}">
+			<span data-th-if="${#fields.hasErrors('leagueName')}" 
+				  data-th-errors="*{leagueName}" 
+				  data-th-text="#{error.field.blank}"
+				  class="field-error"></span>
+		</div>	  
+		<div class="regular-field">
+			<label for="seasonStart" data-th-text="#{league.seasonStart}"></label>
+			<input type="date" data-th-field="*{seasonStart}">
+		</div>	  
+		<div class="regular-field">
+			<label for="seasonEnd" data-th-text="#{league.seasonEnd}"></label>
+			<input type="date" data-th-field="*{seasonEnd}">
+		</div>	  
+	</th-block>
+</body>
+</html>
